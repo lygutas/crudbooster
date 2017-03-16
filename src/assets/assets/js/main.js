@@ -76,10 +76,13 @@
 			$('input[type=text]').first().not(".notfocus").focus();										
 			
 			if($(".datepicker").length > 0) {				
-				$('.datepicker').daterangepicker({					
-					singleDatePicker: true,
-        			showDropdowns: true,
-        			minDate: '1900-01-01',
+				$('.datepicker').datepicker({
+					autoclose: true,
+					weekStart: 1,
+					language: 'lt',
+					daysOfWeekHighlighted: '0,6',
+					showDropdowns: true,
+					minDate: '1900-01-01',
 					format:'YYYY-MM-DD'
 				})
 			}
@@ -101,9 +104,11 @@
 			//Timepicker
 		    if($(".timepicker").length > 0) {
 		    	$(".timepicker").timepicker({
-			      showInputs: true,
-			      showSeconds: true,
-			      showMeridian:false
+					template: false,
+			      	showInputs: true,
+			      	showSeconds: false,
+			      	showMeridian:false,
+					defaultTime: false
 			    });	
 		    }
 

@@ -26,7 +26,7 @@
 
 
     @if(g('return_url'))
-    <p><a href='{{g("return_url")}}'><i class='fa fa-chevron-circle-{{ trans('crudbooster.left') }}'></i> &nbsp; {{trans('crudbooster.form_back_to_list',['module'=>ucwords(str_replace('_',' ',g('parent_table')))])}}</a></p>
+    <p><a href='{{g("return_url")}}'><i class='fa fa-chevron-circle-left'></i> &nbsp; {{trans('crudbooster.form_back_to_list',['module'=> g('parent_label') ?? ucwords(str_replace('_',' ',g('parent_table')))])}}</a></p>
     @endif
 
     @if($parent_table)
@@ -35,11 +35,11 @@
         <table class='table table-bordered'>
           <tbody>
             <tr class='active'>
-              <td colspan="2"><strong><i class='fa fa-bars'></i> {{ ucwords(urldecode(g('label'))) }}</strong></td>
+              <td colspan="2"><strong><i class='fa fa-bars'></i> {{ g('parent_label') ? g('parent_label') : ucwords(str_replace('_',' ',g('parent_table'))) }}</strong></td>
             </tr>
             @foreach(explode(',',urldecode(g('parent_columns'))) as $c)
             <tr>
-              <td width="25%"><strong>{{ ucwords(str_replace('_',' ',$c)) }}</strong></td><td>: {{ $parent_table->$c }}</td>
+              <td width="25%"><strong>{{ str_contains($c, ':') ? substr($c, strpos($c, ':')+1) : ucwords(str_replace('_',' ',$c)) }}</strong></td><td> {{  str_contains($c, ':') ? $parent_table->{substr($c, 0, strpos($c, ':'))} : $parent_table->$c }}</td>
             </tr>
             @endforeach            
           </tbody>
@@ -50,7 +50,7 @@
  
     <div class="box">
       <div class="box-header">  
-        <div class="pull-{{ trans('crudbooster.left') }}">
+        <div class="pull-left">
           <div class="selected-action" style="display:inline-block;position:relative;">
               <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class='fa fa-check-square-o'></i> {{trans("crudbooster.button_selected_action")}}
                 <span class="fa fa-caret-down"></span></button>                              

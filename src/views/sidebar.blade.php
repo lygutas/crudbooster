@@ -6,10 +6,10 @@
 
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel">
-            <div class="pull-{{ trans('crudbooster.left') }} image">
+            <div class="pull-left image">
                 <img src="{{ CRUDBooster::myPhoto() }}" style='height:50px;width:50px' class="img-circle" alt="{{ trans('crudbooster.user_image') }}" />
             </div>
-            <div class="pull-{{ trans('crudbooster.left') }} info">
+            <div class="pull-left info">
                 <p>{{ CRUDBooster::myName() }}</p>
                 <!-- Status -->
                 <a href="#"><i class="fa fa-circle text-success"></i> {{ trans('crudbooster.online') }}</a>
